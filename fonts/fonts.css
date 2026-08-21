@@ -1,0 +1,86 @@
+/*
+ * The site's three faces, self-hosted, all OFL. Linked from app/src/app.html so
+ * the <link> sits in the served document rather than arriving with the JS: this
+ * app sets ssr = false, so a stylesheet injected at mount would start every font
+ * download one round-trip late.
+ *
+ * app/uno.config.ts maps them onto --font-sans, --font-serif and --font-mono,
+ * each keeping its old system stack as the fallback, so a font that fails to
+ * load degrades to exactly what the site ran before adoption.
+ *
+ * Nothing here is fetched eagerly. A browser downloads a @font-face file only
+ * when something on the page is actually set in it, so Piazzolla costs a route
+ * that has no prose nothing at all. See app/static/fonts/LICENSES.md.
+ *
+ * Piazzolla carries a unicode-range because it was cut to the `latin` subset
+ * rather than shipped whole: Danish ÆØÅ live at U+00C5/U+00C6/U+00D8, inside
+ * U+0000-00FF, so latin is enough and latin-ext was left behind. Space Grotesk
+ * and Ioskeley Mono are full-charset upstream builds and declare no range.
+ */
+
+/* ── Display ──────────────────────────────────────────────────────────── */
+
+@font-face {
+	font-family: 'Space Grotesk';
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+	src: url('/fonts/SpaceGrotesk-Variable.woff2') format('woff2');
+}
+
+/* ── Paragraph ────────────────────────────────────────────────────────── */
+
+/* Variable on two axes: wght 100–900 and opsz 8–30. No font-variation-settings
+   here on purpose — font-optical-sizing defaults to auto, so opsz follows the
+   rendered size, which is the whole point of having it. */
+
+@font-face {
+	font-family: 'Piazzolla';
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url('/fonts/Piazzolla-Variable.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+		U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+		U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+	font-family: 'Piazzolla';
+	font-style: italic;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url('/fonts/Piazzolla-VariableItalic.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+		U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+		U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ── Code ─────────────────────────────────────────────────────────────── */
+
+/* Ioskeley has no variable build: each weight is its own file, so the page
+   only ever claims 400 and 700. */
+
+@font-face {
+	font-family: 'Ioskeley Mono';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('/fonts/IoskeleyMono-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Ioskeley Mono';
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url('/fonts/IoskeleyMono-Italic.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Ioskeley Mono';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url('/fonts/IoskeleyMono-Bold.woff2') format('woff2');
+}
