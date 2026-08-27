@@ -18,39 +18,66 @@
 		<link rel="preload" href="/fonts/SpaceGrotesk-Variable.woff2" as="font" type="font/woff2" crossorigin />
 		<link rel="preload" href="/fonts/IoskeleyMono-Regular.woff2" as="font" type="font/woff2" crossorigin />
 		<link rel="stylesheet" href="/fonts/fonts.css" />
-		<link href="../_app/immutable/entry/start.CKKMfSTj.js" rel="modulepreload">
-		<link href="../_app/immutable/chunks/CEk_B4KF.js" rel="modulepreload">
-		<link href="../_app/immutable/chunks/B8yvVwMX.js" rel="modulepreload">
+		<!--
+			The head as a crawler sees it. This app sets ssr = false, so <svelte:head> is
+			written by the browser and never reaches the prerendered HTML: anything that
+			has to survive without JavaScript belongs here, and only here. That makes
+			these the site-wide defaults rather than decoration. PageHead.svelte overrides
+			the title and the og pair per route once the app mounts, which is what a
+			visitor sees in the tab; a crawler that does not run scripts keeps what is
+			below. Per-route social cards need the head prerendered, which needs ssr.
+
+			og:url and og:image are deliberately absent: og:url would need a hardcoded
+			origin, making staging advertise production URLs, and no share image exists.
+		-->
+		<title>Niklas Buhl: creative coder &amp; full-stack software engineer</title>
+		<meta
+			name="description"
+			content="Niklas Buhl designs, develops and builds meaningful technology for the people of tomorrow, makes art and surfs in the morning."
+		/>
+		<meta property="og:site_name" content="Niklas Buhl" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Niklas Buhl: creative coder &amp; full-stack software engineer" />
+		<meta
+			property="og:description"
+			content="Niklas Buhl designs, develops and builds meaningful technology for the people of tomorrow, makes art and surfs in the morning."
+		/>
+		<meta name="twitter:card" content="summary" />
+
+		<link href="../_app/immutable/entry/start.B5ehbP33.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BsuXVG3L.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/zPZblPlg.js" rel="modulepreload">
 		<link href="../_app/immutable/chunks/BuFlayix.js" rel="modulepreload">
-		<link href="../_app/immutable/entry/app.un_rZCpj.js" rel="modulepreload">
+		<link href="../_app/immutable/entry/app.rP4iArOg.js" rel="modulepreload">
 		<link href="../_app/immutable/chunks/kNaey6uv.js" rel="modulepreload">
 		<link href="../_app/immutable/chunks/xihTtKlq.js" rel="modulepreload">
-		<link href="../_app/immutable/nodes/0.BZSgI2Fd.js" rel="modulepreload">
-		<link href="../_app/immutable/chunks/BCld2Ng2.js" rel="modulepreload">
-		<link href="../_app/immutable/chunks/BMtTFn6Z.js" rel="modulepreload">
-		<link href="../_app/immutable/chunks/D8PEQt20.js" rel="modulepreload">
-		<link href="../_app/immutable/chunks/CcO-7xlZ.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/0.ZdYLSEXZ.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DC4RIQf-.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/PzJ5WBHW.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BZKAtk7X.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BYI_4Td5.js" rel="modulepreload">
 		<link href="../_app/immutable/chunks/-5wBtrH5.js" rel="modulepreload">
-		<link href="../_app/immutable/chunks/Bv-hqvB0.js" rel="modulepreload">
-		<link href="../_app/immutable/nodes/18.sw2FQ20T.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BAMoth3k.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/18.Bz20nSma.js" rel="modulepreload">
 		<link href="../_app/immutable/chunks/DsC71hw9.js" rel="modulepreload">
-		<link href="../_app/immutable/chunks/BUfji12K.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/qxr1U1iK.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CNFG84ZI.js" rel="modulepreload">
 		
-		<link href="../_app/immutable/assets/0.C00oiA2L.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/0.CDEcODus.css" rel="stylesheet">
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">
 			<script>
 				{
-					__sveltekit_11e1z7d = {
+					__sveltekit_125cjgf = {
 						base: new URL("..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../_app/immutable/entry/start.CKKMfSTj.js"),
-						import("../_app/immutable/entry/app.un_rZCpj.js")
+						import("../_app/immutable/entry/start.B5ehbP33.js"),
+						import("../_app/immutable/entry/app.rP4iArOg.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element);
 					});
